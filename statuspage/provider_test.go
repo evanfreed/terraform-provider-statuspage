@@ -5,22 +5,20 @@ import (
 	"testing"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
-	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
 )
 
-var testAccProviders map[string]terraform.ResourceProvider
+var testAccProviders map[string]*schema.Provider
 var testAccProvider *schema.Provider
 var pageID string
 var pageID2 string
 
 func init() {
-	testAccProvider = Provider().(*schema.Provider)
-	testAccProviders = map[string]terraform.ResourceProvider{
+	testAccProvider = Provider()
+	testAccProviders = map[string]*schema.Provider{
 		"statuspage": testAccProvider,
 	}
 	pageID = os.Getenv("STATUSPAGE_PAGE")
 	pageID2 = os.Getenv("STATUSPAGE_PAGE_2")
-
 }
 
 func testAccPreCheck(t *testing.T) {

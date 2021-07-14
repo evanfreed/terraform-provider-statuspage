@@ -147,6 +147,11 @@ func resourceComponent() *schema.Resource {
 				Description: "Display Name for the component",
 				Required:    true,
 			},
+			"group_id": {
+				Type:        schema.TypeString,
+				Description: "Component identifier",
+				Computed: true,
+			},
 			"description": {
 				Type:        schema.TypeString,
 				Description: "More detailed description for the component",
